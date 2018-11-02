@@ -1,5 +1,7 @@
 package com.kulak.matrixmultiply;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -32,11 +34,18 @@ public class MatrixMultiply {
                 e.printStackTrace();
             }
         }
+        PrintWriter pw = null;
+        try {
+            pw = new PrintWriter("out.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                System.out.print(C[i * n + j] + " ");
+                pw.write(C[i * n + j] + " ");
             }
-            System.out.println("\n");
+            pw.write("\n");
         }
+        pw.close();
     }
 }
