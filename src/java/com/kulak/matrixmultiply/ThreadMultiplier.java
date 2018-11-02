@@ -14,7 +14,9 @@ public class ThreadMultiplier extends Thread {
     @Override
     public void run() {
         while (j != n) {
-            c[i * n + j] += a[i * n + j] * b[i + n * j];
+            for (int k = 0; k < n; k++) {
+                c[i * n + j] += a[i * n + k] * b[k + n * j];
+            }
             j++;
         }
     }
